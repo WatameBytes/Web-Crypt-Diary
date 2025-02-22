@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Secure Diary App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based secure diary application that provides end-to-end encryption for text entries and files using RSA and AES encryption.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Secure Key Management**
+  - Generate new RSA key pairs
+  - Import existing keys manually or from a file
+  - Export keys for backup and cross-device usage
+  - Local storage of encryption keys
 
-### `npm start`
+- **Text Entry Encryption**
+  - Write and encrypt diary entries
+  - Automatic timestamp-based file naming
+  - Export encrypted entries as files
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **File Encryption**
+  - Encrypt any type of file
+  - Decrypt previously encrypted files
+  - Support for viewing decrypted text files in-app
+  - Automatic download of decrypted non-text files
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Security Implementation
 
-### `npm test`
+The app implements a hybrid encryption system:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **RSA Encryption (RSA-OAEP)**
+   - 2048-bit key length
+   - SHA-256 hashing
+   - Used for encrypting the AES key
 
-### `npm run build`
+2. **AES Encryption (AES-GCM)**
+   - 256-bit key length
+   - Random IV generation for each encryption
+   - Used for encrypting the actual content
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Modern web browser with Web Crypto API support
+- React development environment
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### First-Time Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Generate new encryption keys or import existing ones
+2. Begin creating encrypted diary entries or encrypting files
+3. Export your keys for safekeeping
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage
 
-## Learn More
+### Managing Keys
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Generate New Keys**: Click "Generate New Keys" on the welcome screen
+- **Import Keys**: Either upload a key file or paste keys manually
+- **Export Keys**: Click "Export Keys" in the header to save your keys
+- **Logout**: Removes keys from local storage (prompts for key export)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Creating Diary Entries
 
-### Code Splitting
+1. Write your entry in the text area
+2. Click "Save Entry" to encrypt and download the entry
+3. Files are saved with timestamp-based names (e.g., `diary-entry-1234567890.txt.enc`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### File Operations
 
-### Analyzing the Bundle Size
+- **Encrypting Files**:
+  1. Click "Choose File to Encrypt"
+  2. Select any file from your device
+  3. Receive the encrypted version with `.enc` extension
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Decrypting Files**:
+  1. Click "Choose File to Decrypt"
+  2. Select a previously encrypted `.enc` file
+  3. Text files will display in-app
+  4. Other file types will automatically download
 
-### Making a Progressive Web App
+## Security Considerations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Keys are stored in browser's localStorage
+- Always export and safely store your keys
+- Clear keys when using on shared devices
+- No cloud storage - all files are saved locally
+- No recovery mechanism for lost keys
 
-### Advanced Configuration
+## Technical Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Uses Web Crypto API for cryptographic operations
+- Implements hybrid RSA/AES encryption for efficiency
+- Binary data handling using Uint8Array and Blob
+- File handling through browser's File API
 
-### Deployment
+## File Format
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Encrypted files follow this binary format:
+1. Encrypted key length (2 bytes)
+2. RSA-encrypted AES key
+3. IV length (2 bytes)
+4. AES-GCM IV
+5. AES-encrypted content
 
-### `npm run build` fails to minify
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source. Please add appropriate license information here.

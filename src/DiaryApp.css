@@ -1,0 +1,181 @@
+.diary-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  .diary-header {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .diary-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .diary-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Common button base */
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .button-primary {
+    background: #3b82f6;
+    color: #fff;
+  }
+  
+  .button-secondary {
+    background: #6b7280;
+    color: #fff;
+    margin-bottom: 1em;
+  }
+  
+  .button-secondary:hover {
+    background: #4b5563;
+  }
+  
+  /* A vertical stack for grouping */
+  .button-stack {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 300px;
+  }
+  
+  /* "OR" divider text */
+  .or-divider {
+    text-align: center;
+    color: #6b7280;
+    font-weight: bold;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Reusable container for sections */
+  .diary-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .welcome-text {
+    text-align: center;
+    margin: 20px 0;
+    color: #4b5563;
+  }
+  
+  .diary-textarea {
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 15px;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  /* File upload area */
+  .file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .file-name {
+    margin-left: 10px;
+    color: #4b5563;
+    font-size: 14px;
+  }
+  
+  /* Import manual input area */
+  .import-section {
+    margin-top: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #374151;
+  }
+  
+  .import-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 10px;
+    font-size: 14px;
+    resize: none;
+  }
+  
+  /* Footer for entry creation */
+  .entry-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Section headings */
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #374151;
+  }
+  
+  /* Decrypted text display area */
+  .decrypted-content {
+    background: #f3f4f6;
+    padding: 15px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+  }
+  
+  /* Grouped buttons in the import section */
+  .button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .button-group .button {
+    flex: 1;
+    max-width: 150px;
+  }
+  
+  /* Hide the actual file input, rely on label/button styling */
+  input[type="file"] {
+    display: none;
+  }
+  
